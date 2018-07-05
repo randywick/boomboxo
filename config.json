@@ -1,0 +1,5 @@
+{
+    "saltKey": "foo-bar",
+    "outputDirectory": "/home/rwick/projects/boomboxo/public/audio",
+    "downloadBinary": "/usr/local/bin/youtube-dl"
+}
