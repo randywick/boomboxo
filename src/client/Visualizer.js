@@ -41,15 +41,27 @@ export default class Visualizer extends React.Component {
 
             // const y = v * this.height / 2;
             // const y = (v * this.height / 4) + this.height;
-            const divisor = this.props.domain === 'time' ? 2 : 3;
-            const center = this.props.domain === 'frequency' ? this.height * 0.5 : 0;
-            const y = v * this.height / divisor + center;
+            const divisor = this.props.domain === 'time' ? 2 : 1;
+            // const center = this.props.domain === 'frequency' ? this.height * 0.5 : 0;
+            const center = 0;
+            let y = v * this.height / divisor + center;
+            if (this.props.domain === 'frequency') {
+                y -= this.height * 1.75;
+                y *= -1;
+                y = y / 2
+            }
 
 
             if (!i) {
                 ctx.moveTo(x, y);
             } else if (v) {
-                ctx.lineTo(x, y);
+                if (this.props.domain === 'frequency') {
+                    ctx.moveTo(x, y);
+                    ctx.fillStyle = 'rgb(0, 0, 0)';
+                    ctx.fillRect(x, y, 2, 5);
+                } else {
+                    ctx.lineTo(x, y);
+                }
             }
 
             x += sliceWidth;
