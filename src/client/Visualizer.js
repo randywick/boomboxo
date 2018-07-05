@@ -36,7 +36,7 @@ export default class Visualizer extends React.Component {
 
             const sample = this.props.sampleDataArray[i];
 
-            const v = sample / 128;
+            const v = sample / this.height;
             // const v = sample
 
             // const y = v * this.height / 2;
@@ -46,9 +46,10 @@ export default class Visualizer extends React.Component {
             const center = 0;
             let y = v * this.height / divisor + center;
             if (this.props.domain === 'frequency') {
-                y -= this.height * 1.75;
+                y -= this.height * 1;
                 y *= -1;
-                y = y / 2
+                // y = y / 2
+                // y = v / this.height;
             }
 
 
